@@ -1,0 +1,20 @@
+<a routerLink="./addSugg"> Ajouter suggestion</a>
+
+<div class="row">
+<div class="col-md-3" *ngFor="let s of suggestions">
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">title :  {{s.title}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">category : {{s.category}}</h6>
+    <p class="card-text">{{s.description}}</p>
+     <p class="card-text">status : {{s.status}}</p>
+     <p class="card-text">date : {{s.date}}</p>
+      <p class="card-text">nbLikes : {{s.nbLikes}}</p>
+    <a href="#" class="card-link">Card link</a>
+    <button [routerLink]="['detail',s.id]" class="btn btn-primary" >detail</button>    <button class="btn btn-dark" [routerLink]="['update',s.id]" >update</button>
+  </div>
+</div>
+
+</div>
+</div>
