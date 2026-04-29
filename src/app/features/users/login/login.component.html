@@ -1,0 +1,28 @@
+<h1>FormControl</h1>
+
+<label >Email address</label>
+    <input type="email" class="form-control"  placeholder="Enter email" [formControl]="email">
+    <label >Password</label>
+    <input type="password" class="form-control" placeholder="Password" [formControl]="pwd">
+<button type="submit" class="btn btn-primary" (click)="save()"  [disabled]="email.invalid || pwd.invalid">Submit</button>
+
+<h1>FormGroup</h1>
+<form [formGroup]="login">
+    <label >Email address</label>
+    <input type="email" class="form-control"  placeholder="Enter email" formControlName="email">
+    <div class="alert alert-danger" *ngIf="login.controls['email'].invalid && login.controls['email'].touched">
+      <p *ngIf="login.controls['email'].hasError('required')">email est obligatoire </p>
+      <p *ngIf="login.controls['email'].hasError('email')"> email doit etre  valide </p>
+    </div>
+    <label >Password</label>
+    <input type="password" class="form-control" placeholder="Password" formControlName="pwd">
+    <div class="alert alert-danger" *ngIf="login.controls['pwd'].invalid && login.controls['pwd'].touched">
+      <p *ngIf="login.controls['pwd'].hasError('required')">password est obligatoire </p>
+      <p *ngIf="login.controls['pwd'].hasError('pattern')"> password doit etre valide</p>
+    </div>
+    <label >CIN</label>
+    <input type="bumber" class="form-control"  placeholder="Enter CIN" formControlName="cin">
+    <label >address</label>
+    <input type="text" class="form-control" placeholder="address" formControlName="address">
+<button type="submit" class="btn btn-primary" (click)="save()"  [disabled]="login.invalid">Submit</button>
+</form>

@@ -6,10 +6,9 @@ import { DetailSuggComponent } from './features/suggestions/detail-sugg/detail-s
 
 const routes: Routes = [
   {path:'products', component : HomeComponent},
- // {path :'suggestion' , component : ListSuggestionComponent},
-  {path :'suggestion/detail/:id' , component : DetailSuggComponent},
   {path:'', redirectTo :'products' ,pathMatch:'full'},
   { path: 'suggestions', loadChildren: () => import('./features/suggestions/suggestions.module').then(m => m.SuggestionsModule) },
+  { path: 'users', loadChildren: () => import('./features/users/users.module').then(m => m.UsersModule) },
 
     {path:'**' ,component: NotFoundComponent},
 
