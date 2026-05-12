@@ -13,7 +13,13 @@ suggestions: Suggestion[] = []
 constructor(private sugS : SuggestionService){}
 
  ngOnInit(){
-  this.suggestions= this.sugS.suggestions
+ // this.suggestions= this.sugS.suggestions
+ // afficher depuis la BD
+ this.sugS.getsuggestion().subscribe({
+  next : (data) =>this.suggestions = data,
+  error : (err) => console.log(err),
+  complete : () => console.log("suggestions loaded")
+ })
  }
 }
 

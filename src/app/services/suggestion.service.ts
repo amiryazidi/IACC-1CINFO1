@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Suggestion } from '../models/Suggestion';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -47,5 +48,21 @@ export class SuggestionService {
   },
   ];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  getsuggestion(){
+    return this.http.get<Suggestion[]>('http://localhost:3000/suggestions');
+  }
+  getSuggestionById(id: number){
+    return this.http.get<Suggestion>(`http://localhost:3000/suggestions/${id}`);
+  }
+  AddSuggestion(suggestion: Suggestion){
+    return this.http.post('http://localhost:3000/suggestions', suggestion);
+  }
+  DeleteSuggestion(id: number){
+    return this.http.delete('http://localhost:3000/suggestions/' + id);
+  }
+  UpdateSuggestion(suggestion: Suggestion,id:number){
+    return this.http.put(`http://localhost:3000/suggestions/${id}`, suggestion);
+  }
 }
