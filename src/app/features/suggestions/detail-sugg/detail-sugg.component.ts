@@ -18,10 +18,15 @@ export class DetailSuggComponent {
     this.id=this.Act.snapshot.params['id']
     // recuperer l'objet
     //this.suggestion=this.sugS.suggestions[this.id]
-    this.suggestion=this.sugS.suggestions.find(s => s.id == this.id)!
+   // this.suggestion=this.sugS.suggestions.find(s => s.id == this.id)!
+   this.sugS.getSuggestionById(this.id).subscribe({
+    next : (data) => this.suggestion = data,
+    error : (err) => console.log(err),
+    complete : () => console.log("suggestion loaded")
+   })
 
     console.log(this.id)
   }
 
-  
+
 }

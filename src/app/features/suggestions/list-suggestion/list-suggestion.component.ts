@@ -21,5 +21,15 @@ constructor(private sugS : SuggestionService){}
   complete : () => console.log("suggestions loaded")
  })
  }
+
+ delete(id:number){
+  this.sugS.DeleteSuggestion(id).subscribe({
+    next : (data) => {
+      this.ngOnInit() // pour rafraichir la liste apres suppression
+    },
+    error : (err) => console.log(err),
+    complete : () => console.log("suggestion deleted")
+  })
+ }
 }
 

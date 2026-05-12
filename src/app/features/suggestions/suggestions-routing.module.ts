@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: '', component: ListSuggestionComponent },
   {path :'detail/:id' , component : DetailSuggComponent},
   {path :'addSugg', component:SuggestionFormComponent},
+  {path :'update/:id', component:SuggestionFormComponent}
 
 ];
 
